@@ -15,7 +15,16 @@ app.get("/", (req, res) => {
   res.render("index", { text: "こんにちは" });
 });
 
+//ルーティング
 app.use("/user", userRouter);
+
+// router.get("user/", (req, res) => {
+//   res.send("ユーザーリスト");
+// });
+
+// router.get("user/info", (req, res) => {
+//   res.send("ユーザー情報");
+// });
 
 //ミドルウェア
 // function logger(req, res, next) {
