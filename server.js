@@ -2,10 +2,9 @@ const express = require("express");
 const app = express();
 const userRouter = require("./routes/user");
 
-app.listen(3000, console.log("サーバーが起動しました"));
-
+app.use(express.static("public"));
+// app.use(logger);
 app.set("view engine", "ejs");
-app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
   console.log("Hello Express");
@@ -15,3 +14,13 @@ app.get("/", (req, res) => {
   //res.status(500).json({ msg: "エラー" });
   res.render("index", { text: "こんにちは" });
 });
+
+app.use("/user", userRouter);
+
+//ミドルウェア
+// function logger(req, res, next) {
+//   console.log(req.originalUrl);
+//   next();
+// }
+
+app.listen(3000, console.log("サーバーが起動しました"));
